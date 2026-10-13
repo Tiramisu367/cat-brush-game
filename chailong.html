@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Chải Lông Mèo 🐱</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #fdf6e2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            user-select: none;
+        }
+        h1 {
+            color: #d97706;
+            margin-bottom: 5px;
+        }
+        #score {
+            font-size: 1.2rem;
+            color: #4b5563;
+            margin-bottom: 20px;
+        }
+        .cat-container {
+            position: relative;
+            cursor: pointer;
+        }
+        .cat {
+            font-size: 120px;
+            transition: transform 0.1s;
+        }
+        .cat:active {
+            transform: scale(0.95);
+        }
+        .fur-pile {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #6b7280;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Mèo Lười Chải Lông 🐾</h1>
+    <div id="score">Điểm chải lông: <span id="count">0</span></div>
+
+    <div class="cat-container" id="catBtn">
+        <div class="cat">🐱</div>
+    </div>
+
+    <div class="fur-pile">Lông đã thu thập: <span id="furCount">0</span> sợi</div>
+
+    <script>
+        let score = 0;
+        const catBtn = document.getElementById('catBtn');
+        const countSpan = document.getElementById('count');
+        const furCountSpan = document.getElementById('furCount');
+
+        catBtn.addEventListener('click', () => {
+            score++;
+            countSpan.textContent = score;
+            furCountSpan.textContent = score * 3; // Giả lập mỗi lần chải được 3 sợi lông
+            
+            // Hiệu ứng nhỏ khi click
+            catBtn.style.transform = "rotate(" + (Math.random() * 10 - 5) + "deg)";
+            setTimeout(() => {
+                catBtn.style.transform = "rotate(0deg)";
+            }, 100);
+        });
+    </script>
+
+</body>
+</html>
